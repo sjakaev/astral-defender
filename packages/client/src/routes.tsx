@@ -1,5 +1,4 @@
 import Leaderboard from './pages/Leaderboard'
-import RegisterPage from './pages/registration/RegisterPage'
 import Login from './pages/Login'
 import Forum from './pages/Forum'
 import MainMenu from './pages/MainMenu'
@@ -46,10 +45,6 @@ const routes = [
   {
     path: '/',
     element: <Login />,
-  },
-  {
-    path: '/signup',
-    element: <RegisterPage />,
   },
   {
     path: '/profile',
