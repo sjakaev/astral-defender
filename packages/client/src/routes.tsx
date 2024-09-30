@@ -1,6 +1,4 @@
-import Leaderboard from './pages/Leaderboard'
 import Login from './pages/Login'
-import Forum from './pages/Forum'
 import MainMenu from './pages/MainMenu'
 import ProfilePage from './pages/Profile'
 import ErrorPage404 from './pages/ErrorPage404'
@@ -49,20 +47,6 @@ const routes = [
   {
     path: '/profile',
     element: <ProfilePage />,
-  },
-  {
-    path: '/leaderboard',
-    element: <Leaderboard />,
-  },
-  {
-    path: '/forum',
-    element: <Forum />,
-    children: [
-      {
-        path: '/forum/:topicId',
-        element: <Forum />,
-      },
-    ],
   },
   {
     path: '/game',
