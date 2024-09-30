@@ -16,14 +16,14 @@ function Login() {
         <div className={style.wrapper}>
           <div className={style.title}>
             <Typography variant="h1" component="h1">
-              BUGS
+              Astral
             </Typography>
             <Typography variant="h2" component="h1">
-              SURVIVORS
+              Defender
             </Typography>
           </div>
           <Button href="/game" variant="contained" color="primary">
-            Demo
+            Start
           </Button>
         </div>
       </div>
