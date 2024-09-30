@@ -14,5 +14,5 @@ export default function Canvas({ game }: { game: IGame }) {
     }
   }, [canvasRef])
 
-  return <canvas className={styles.canvas} ref={canvasRef} />
+  return <canvas className={styles.canvas} ref={canvasRef} style={{ backgroundImage: 'url(/images/game-background.png)' }} />
 }
