@@ -3,6 +3,7 @@ import { IGame } from './interfaces'
 class CanvasController {
   animationFrameId?: number
   isPause = false
+  backgroundX = 0 // Pd346
 
   constructor(public canvas: HTMLCanvasElement, private game: IGame) {
     this.game.canvas = this
@@ -29,6 +30,7 @@ class CanvasController {
 
         if (!this.isPause) {
           this.clearCanvas(ctx)
+          this.moveBackground(ctx) // P60d3
           this.game.render(ctx)
         }
       }
@@ -39,6 +41,19 @@ class CanvasController {
 
   private clearCanvas(ctx: CanvasRenderingContext2D) {
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+  }
+
+  private moveBackground(ctx: CanvasRenderingContext2D) { // P0a18
+    const backgroundImage = new Image()
+    backgroundImage.src = '/images/game-background.png'
+    backgroundImage.onload = () => {
+      this.backgroundX -= 2
+      if (this.backgroundX <= -this.canvas.width) {
+        this.backgroundX = 0
+      }
+      ctx.drawImage(backgroundImage, this.backgroundX, 0, this.canvas.width, this.canvas.height)
+      ctx.drawImage(backgroundImage, this.backgroundX + this.canvas.width, 0, this.canvas.width, this.canvas.height)
+    }
   }
 
   stop() {
