@@ -23,6 +23,7 @@ class Game implements IGame {
   GameTick = 0
   timer = 0
   lastTimerUpdate?: number // Время последнего обновления таймера
+  backgroundSpeed = 2
 
   pause = false
   spawnRate = 100
