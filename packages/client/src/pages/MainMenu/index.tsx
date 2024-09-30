@@ -1,8 +1,5 @@
 import { Button, Typography } from '@mui/material'
 import { Helmet } from 'react-helmet'
-import { useLoggedInUser } from '../../hooks/useLoggedInUser'
-import { logOutUser } from '../../store/slices/userSlice'
-import { useAppDispatch } from '../../hooks/reduxHooks'
 import Clue from '../../components/Clue'
 import styles from './styles.module.scss'
 
@@ -15,17 +12,6 @@ const breakpointSizes = {
 }
 
 function MainMenu() {
-  useLoggedInUser()
-  const dispatch = useAppDispatch()
-
-  function handleLogout() {
-    try {
-      dispatch(logOutUser())
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
   return (
     <div className={styles['main-menu']}>
       <Helmet>
@@ -44,17 +30,11 @@ function MainMenu() {
         <Button href="/game" variant="contained">
           Start Game
         </Button>
-        <Button href="/profile" variant="contained" color="secondary">
-          Profile
-        </Button>
         <Button href="/leaderboard" variant="contained" color="secondary">
           Leaderbroad
         </Button>
         <Button href="/forum" variant="contained" color="secondary">
           Forum
-        </Button>
-        <Button onClick={handleLogout} variant="contained" color="secondary">
-          Logout
         </Button>
       </div>
       <Clue />
