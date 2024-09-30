@@ -13,22 +13,15 @@ export function useLoggedInUser() {
 
     useAsyncEffect(async () => {
       if (user?.user.id) {
-        if (location.pathname === '/' || location.pathname === '/signup') {
-          navigate('/main_menu')
-        }
         return
       }
 
       try {
         await dispatch(fetchUser()).unwrap()
-        if (location.pathname === '/' || location.pathname === '/signup') {
-          navigate('/main_menu')
-        }
       } catch (error) {
         console.error(error)
         if (
           location.pathname !== '/' &&
-          location.pathname !== '/signup' &&
           location.pathname !== '/game' &&
           location.pathname !== '/gameOver'
         ) {
