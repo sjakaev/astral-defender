@@ -30,12 +30,6 @@ function MainMenu() {
         <Button href="/game" variant="contained">
           Start Game
         </Button>
-        <Button href="/leaderboard" variant="contained" color="secondary">
-          Leaderbroad
-        </Button>
-        <Button href="/forum" variant="contained" color="secondary">
-          Forum
-        </Button>
       </div>
       <Clue />
     </div>
