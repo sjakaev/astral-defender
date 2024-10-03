@@ -8,6 +8,7 @@ import Player from './Player'
 import Enemies from './Enemies'
 import Exps from './Exp'
 import Bullets from './Bullets'
+import Background from './Background'
 
 class Game implements IGame {
   Camera: Camera
@@ -22,8 +23,9 @@ class Game implements IGame {
   CanvasHeight = window.innerHeight
   GameTick = 0
   timer = 0
-  lastTimerUpdate?: number // Время последнего обновления таймера
+  lastTimerUpdate?: number
   backgroundSpeed = 2
+  background: Background;
 
   pause = false
   spawnRate = 100
@@ -38,6 +40,7 @@ class Game implements IGame {
     public navigate: NavigateFunction
   ) {
     this.audioContext = new AudioContext()
+    this.background = new Background('/images/game-background.png')
     this.Camera = new Camera(this)
     this.TextParticles = new TextParticles(this)
     this.Player = new Player(this)
@@ -126,6 +129,8 @@ class Game implements IGame {
   }
 
   render(ctx: CanvasRenderingContext2D) {
+    this.Camera.cameraMovement()
+    this.background.draw(ctx, -this.Camera.x, -this.Camera.y, this.CanvasWidth, this.CanvasHeight)
     this.Bullets.renderBullet(ctx)
     this.Bullets.createBullet()
     this.Enemies.renderEnemies(ctx)

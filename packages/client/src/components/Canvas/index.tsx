@@ -8,24 +8,11 @@ export default function Canvas({ game }: { game: IGame }) {
 
   useEffect(() => {
     if (canvasRef.current) {
-      const canvas = new CanvasController(canvasRef.current, game)
+      const canvasController = new CanvasController(canvasRef.current, game)
 
-      return () => canvas.stop()
+      return () => canvasController.stop()
     }
-  }, [canvasRef])
-
-  useEffect(() => {
-    if (canvasRef.current) {
-      const ctx = canvasRef.current.getContext('2d')
-      if (ctx) {
-        const backgroundImage = new Image()
-        backgroundImage.src = '/images/game-background.png'
-        backgroundImage.onload = () => {
-          ctx.drawImage(backgroundImage, 0, 0, canvasRef.current!.width, canvasRef.current!.height)
-        }
-      }
-    }
-  }, [canvasRef])
+  }, [canvasRef, game])
 
   return <canvas className={styles.canvas} ref={canvasRef} />
 }
