@@ -43,7 +43,7 @@ export const theme = createTheme({
       white: '#fff',
     },
     primary: {
-      main: '#3F767B',
+      main: '#52275f',
       contrastText: '#F2F9F8',
       // light: '#C1E0DF',
       // main: '#3F767B',

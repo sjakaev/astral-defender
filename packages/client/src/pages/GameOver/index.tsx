@@ -21,10 +21,10 @@ const GameOver = () => {
       </Helmet>
       <Grid item className={styles.title}>
         <Typography variant="h1" component="h1">
-          BUGS
+          Astral
         </Typography>
         <Typography variant="h2" component="h1">
-          SURVIVORS
+          Defender
         </Typography>
       </Grid>
       <List sx={{ width: '100%' }}>

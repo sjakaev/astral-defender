@@ -24,7 +24,7 @@ function MainMenu() {
         className={styles['main-menu_title']}
         variant="h1"
         component="h1">
-        BUGS SURVIVORS
+        Astral Defender
       </Typography>
       <div className={styles['main-menu_buttons']}>
         <Button href="/game" variant="contained">
