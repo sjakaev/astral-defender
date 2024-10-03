@@ -33,8 +33,8 @@ beforeEach(() => {
 describe('RegisterPage', () => {
   it('should render registration form', () => {
     // Проверяем наличие заголовков
-    expect(screen.getByText('BUGS')).toBeInTheDocument()
-    expect(screen.getByText('SURVIVORS')).toBeInTheDocument()
+    expect(screen.getByText('Astral')).toBeInTheDocument()
+    expect(screen.getByText('Defender')).toBeInTheDocument()
     expect(screen.getByText('Sign Up')).toBeInTheDocument()
 
     // Проверяем наличие всех полей формы

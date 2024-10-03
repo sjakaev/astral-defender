@@ -34,8 +34,8 @@ const GameOver = () => {
           {convertSeconds(time)}
         </ListItem>
         <ListItem className={styles.listItem}>
-          <img src="/images/bugs.png" alt="bugs" />
-          <span className={styles.listTextLabel}>bugs</span>
+          <img src="/images/monsters.png" alt="monsters" />
+          <span className={styles.listTextLabel}>monsters</span>
           {diedEnemies}
         </ListItem>
         <ListItem className={styles.listItem}>
