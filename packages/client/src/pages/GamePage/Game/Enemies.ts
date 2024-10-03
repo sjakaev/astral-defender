@@ -117,7 +117,7 @@ class Enemies {
             height: 70 + (isBoss ? 100 : 0),
             x: x + rand(0, this.game.CanvasWidth) * (side == 'x' ? 1 : 0),
             y: y + rand(0, this.game.CanvasHeight) * (side == 'y' ? 1 : 0),
-            speed: 1,
+            speed: 1 + (level - 1) * 0.2,
             frame: 0,
             frameLine: 0,
             frameSize: 16,
