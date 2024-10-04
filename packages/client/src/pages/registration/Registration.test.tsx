@@ -3,17 +3,17 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import RegisterPage from './RegisterPage'
 import { signUp } from '../../api/basic/auth'
 
-// Мокаем signUp для предотвращения реальных вызовов API
+// Mocking signUp to prevent real API calls
 jest.mock('../../api/basic/auth', () => ({
   signUp: jest.fn(),
 }))
 
-// Мокаем проверку авторизованности пользователя
+// Mocking user authorization check
 jest.mock('../../hooks/useLoggedInUser', () => ({
   useLoggedInUser: jest.fn(),
 }))
 
-// Мокаем useNavigate для проверки переходов
+// Mocking useNavigate to check navigation
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: () => jest.fn(),
@@ -32,12 +32,12 @@ beforeEach(() => {
 
 describe('RegisterPage', () => {
   it('should render registration form', () => {
-    // Проверяем наличие заголовков
+    // Checking for the presence of headers
     expect(screen.getByText('Astral')).toBeInTheDocument()
     expect(screen.getByText('Defender')).toBeInTheDocument()
     expect(screen.getByText('Sign Up')).toBeInTheDocument()
 
-    // Проверяем наличие всех полей формы
+    // Checking for the presence of all form fields
     const fields = [
       'First name',
       'Second name',
@@ -50,13 +50,13 @@ describe('RegisterPage', () => {
       expect(screen.getByLabelText(field)).toBeInTheDocument()
     })
 
-    // Проверяем наличие кнопок
+    // Checking for the presence of buttons
     expect(screen.getByText('SIGN IN')).toBeInTheDocument()
     expect(screen.getByText('SIGN UP')).toBeInTheDocument()
   })
 
   it('should update form fields on change', () => {
-    // Изменяем значения полей формы и проверяем их обновление
+    // Changing form field values and checking their update
     const firstNameInput = screen.getByLabelText(
       'First name'
     ) as HTMLInputElement
@@ -71,7 +71,7 @@ describe('RegisterPage', () => {
   it('should call signUp and navigate on form submit', async () => {
     const mockedSignUp = signUp as jest.Mock
     mockedSignUp.mockResolvedValueOnce({})
-    // Заполняем форму
+    // Filling out the form
     fireEvent.change(screen.getByLabelText('First name'), {
       target: { value: 'John' },
     })
@@ -91,12 +91,12 @@ describe('RegisterPage', () => {
       target: { value: 'Password123!' },
     })
 
-    // Отправляем форму
+    // Submitting the form
     await act(async () => {
       fireEvent.submit(screen.getByRole('button', { name: 'SIGN UP' }))
     })
 
-    // Проверяем вызов signUp с правильными данными
+    // Checking the call to signUp with the correct data
     expect(mockedSignUp).toHaveBeenCalledWith({
       first_name: 'John',
       second_name: 'Doe',
@@ -106,4 +106,4 @@ describe('RegisterPage', () => {
       password: 'Password123!',
     })
   })
-})
+}

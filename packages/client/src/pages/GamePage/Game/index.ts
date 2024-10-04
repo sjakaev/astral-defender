@@ -77,7 +77,7 @@ class Game implements IGame {
   }
 
   private initLinter() {
-    // Создание листнера для отслеживания нажатых клавиш
+    // Creating a listener to track pressed keys
     const pressedKeys: Record<string, boolean> = {}
 
     const handleKeyDown = (event: KeyboardEvent) => {
