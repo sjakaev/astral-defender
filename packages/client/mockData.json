@@ -214,11 +214,11 @@
   "forum": [
     {
       "id": "new_games",
-      "name": "Новые игры",
+      "name": "New games",
       "data": [
         {
           "id": "1",
-          "name": "Покер",
+          "name": "Poker",
           "creator": {
             "id": "1",
             "avatar": "/images/defaultAvatar.png",
@@ -232,7 +232,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j"
               },
-              "answer": "Здравствуйте! Предлагаю сделать покер по мотивам Карты, деньги, два ствола. Но не просто покер, а с возможностью шулерства."
+              "answer": "Hello! I suggest making poker based on the movie Lock, Stock and Two Smoking Barrels. But not just poker, with the possibility of cheating."
             },
             {
               "id": "2",
@@ -241,13 +241,13 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 2"
               },
-              "answer": "Типа можно подложить свои карты или использовать фальшивые фишки"
+              "answer": "Like you can put your own cards or use fake chips"
             }
           ]
         },
         {
           "id": "2",
-          "name": "Бои без правил",
+          "name": "No holds barred",
           "creator": {
             "id": "2",
             "avatar": "/images/defaultAvatar.png",
@@ -261,7 +261,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j"
               },
-              "answer": "Здравствуйте! Предлагаю сделать покер по мотивам Карты, деньги, два ствола. Но не просто покер, а с возможностью шулерства."
+              "answer": "Hello! I suggest making poker based on the movie Lock, Stock and Two Smoking Barrels. But not just poker, with the possibility of cheating."
             },
             {
               "id": "2",
@@ -270,7 +270,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 2"
               },
-              "answer": "Типа можно подложить свои карты или использовать фальшивые фишки"
+              "answer": "Like you can put your own cards or use fake chips"
             }
           ]
         }
@@ -278,7 +278,7 @@
     },
     {
       "id": "game_designers",
-      "name": "Геймдизайнеры",
+      "name": "Game designers",
       "data": [
         {
           "id": "3",
@@ -296,7 +296,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j"
               },
-              "answer": "Здравствуйте! Предлагаю сделать покер по мотивам Карты, деньги, два ствола. Но не просто покер, а с возможностью шулерства."
+              "answer": "Hello! I suggest making poker based on the movie Lock, Stock and Two Smoking Barrels. But not just poker, with the possibility of cheating."
             },
             {
               "id": "2",
@@ -305,7 +305,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 2"
               },
-              "answer": "Типа можно подложить свои карты или использовать фальшивые фишки"
+              "answer": "Like you can put your own cards or use fake chips"
             }
           ]
         },
@@ -325,7 +325,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 2"
               },
-              "answer": "Здравствуйте! Предлагаю сделать покер по мотивам Карты, деньги, два ствола. Но не просто покер, а с возможностью шулерства."
+              "answer": "Hello! I suggest making poker based on the movie Lock, Stock and Two Smoking Barrels. But not just poker, with the possibility of cheating."
             },
             {
               "id": "2",
@@ -334,7 +334,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 2"
               },
-              "answer": "Типа можно подложить свои карты или использовать фальшивые фишки"
+              "answer": "Like you can put your own cards or use fake chips"
             }
           ]
         }
@@ -342,7 +342,7 @@
     },
     {
       "id": "technologies",
-      "name": "Технологии",
+      "name": "Technologies",
       "data": [
         {
           "id": "5",
@@ -360,7 +360,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j"
               },
-              "answer": "Здравствуйте! Предлагаю сделать покер по мотивам Карты, деньги, два ствола. Но не просто покер, а с возможностью шулерства."
+              "answer": "Hello! I suggest making poker based on the movie Lock, Stock and Two Smoking Barrels. But not just poker, with the possibility of cheating."
             },
             {
               "id": "2",
@@ -369,7 +369,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 2"
               },
-              "answer": "Типа можно подложить свои карты или использовать фальшивые фишки"
+              "answer": "Like you can put your own cards or use fake chips"
             }
           ]
         },
@@ -389,7 +389,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j"
               },
-              "answer": "Здравствуйте! Предлагаю сделать покер по мотивам Карты, деньги, два ствола. Но не просто покер, а с возможностью шулерства."
+              "answer": "Hello! I suggest making poker based on the movie Lock, Stock and Two Smoking Barrels. But not just poker, with the possibility of cheating."
             },
             {
               "id": "2",
@@ -398,7 +398,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 2"
               },
-              "answer": "Типа можно подложить свои карты или использовать фальшивые фишки"
+              "answer": "Like you can put your own cards or use fake chips"
             },
             {
               "id": "3",
@@ -407,7 +407,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 3"
               },
-              "answer": "Типа можно подложить свои карты или использовать фальшивые фишки"
+              "answer": "Like you can put your own cards or use fake chips"
             },
             {
               "id": "4",
@@ -416,7 +416,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 4"
               },
-              "answer": "Покер — это клёво. В один вечер можно побывать на вершине и на дне. Важны не плохие или хорошие карты, важно уметь играть с плохими. Важно не то, какие у тебя карты на самом деле, а то, какие они по мнению противника."
+              "answer": "Poker is cool. In one evening you can be at the top and at the bottom. It's not about having bad or good cards, it's about being able to play with bad ones. It's not about what cards you actually have, it's about what your opponent thinks they are."
             },
             {
               "id": "5",
@@ -425,7 +425,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 5"
               },
-              "answer": "Кабы не покер, то жизнь ваша в Москве была бы совершенно несносна."
+              "answer": "If it weren't for poker, your life in Moscow would be completely unbearable."
             },
             {
               "id": "6",
@@ -434,7 +434,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 6"
               },
-              "answer": "Здорово встретить кого-то, кто понимает, что для настоящего игрока деньги в конечном итоге не значат ничего. Это просто инструмент, вроде языка для формулирования мысли."
+              "answer": "It's great to meet someone who understands that for a real player, money ultimately means nothing. It's just a tool, like language for formulating thoughts."
             },
             {
               "id": "7",
@@ -443,7 +443,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 7"
               },
-              "answer": "Иногда «ничего» – очень крутая карта."
+              "answer": "Sometimes 'nothing' is a very cool card."
             },
             {
               "id": "8",
@@ -452,7 +452,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 8"
               },
-              "answer": "Научиться правильно разыгрывать две пары так же сложно, как получить образование в колледже, и так же дорого стоит."
+              "answer": "Learning to play two pairs correctly is as difficult as getting a college education, and just as expensive."
             },
             {
               "id": "9",
@@ -461,7 +461,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 9"
               },
-              "answer": "Мы не можем вот так его застрелить. Нам тогда не с кем будет играть в покер."
+              "answer": "We can't just shoot him. Then we won't have anyone to play poker with."
             },
             {
               "id": "10",
@@ -470,7 +470,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 10"
               },
-              "answer": "Я скажу тебе, что в этой игре главное. Нужно принимать неправильные решения в правильное время."
+              "answer": "I'll tell you what's important in this game. You need to make the wrong decisions at the right time."
             },
             {
               "id": "11",
@@ -479,7 +479,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 11"
               },
-              "answer": "Жизнь очень хрупка и непредсказуема, особенно у преступников. Это как игра в покер; вы думаете, что у вас хорошая рука. Тем не менее, когда вы открываете карты, к своему ужасу вы понимаете, что чья-то рука лучше."
+              "answer": "Life is very fragile and unpredictable, especially for criminals. It's like playing poker; you think you have a good hand. However, when you reveal your cards, to your horror you realize that someone else's hand is better."
             },
             {
               "id": "12",
@@ -488,7 +488,7 @@
                 "avatar": "/images/defaultAvatar.png",
                 "name": "statham.j 12"
               },
-              "answer": "– У меня четыре туза!\n– У меня тоже!"
+              "answer": "- I have four aces!\n- So do I!"
             }
           ]
         }
