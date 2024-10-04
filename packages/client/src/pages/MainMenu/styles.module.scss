@@ -12,21 +12,21 @@
   gap: 4.875rem;
 
   &_title {
-    background: linear-gradient(#982eb1 46%, #bfa8ce, #4396b5 80%);
+    background: linear-gradient(#595b9e 46%, #bfa8ce, #4396b5 80%);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: center;
     filter: drop-shadow(0.5rem 0.5rem #2f464a);
     letter-spacing: -0.5rem;
+
+    @include xl {
+      padding-top: 50px;
+    }
+
   }
 
   &_buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 15rem;
-    height: 32.625rem;
-    gap: 2rem;
-    max-height: max-content;
+    text-align: center;
+    margin-bottom: 6rem;
   }
 }

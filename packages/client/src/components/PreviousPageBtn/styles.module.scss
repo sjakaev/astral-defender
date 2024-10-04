@@ -1,7 +1,11 @@
 .previousPageBtn {
-  margin-right: 4rem !important;
+  margin-right: 2rem !important;
   color: white !important;
   &:before {
     content: '<-';
+  }
+
+  @include md {
+    font-size: 18px !important;
   }
 }

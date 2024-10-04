@@ -15,20 +15,20 @@ const LinkBehavior = forwardRef<
 })
 
 const breakpoints = {
-  xs: 360,
+  xs: 0,
   sm: 576,
   md: 768,
   lg: 992,
   xl: 1200,
-  xxl: 1640,
+  xxl: 1400,
 }
 const mediaBreakpoint = {
-  xs: '@media (max-width:360px)',
-  sm: '@media (max-width:576px)',
-  md: '@media (max-width:768px)',
-  lg: '@media (max-width:992px)',
-  xl: '@media (max-width:1200px)',
-  xxl: '@media (max-width:1640px)',
+  xs: '@media (max-width:575px)',
+  sm: '@media (min-width:576px)',
+  md: '@media (min-width:768px)',
+  lg: '@media (min-width:992px)',
+  xl: '@media (min-width:1200px)',
+  xxl: '@media (min-width:1640px)',
 }
 
 export const theme = createTheme({
@@ -92,7 +92,6 @@ export const theme = createTheme({
   },
   typography: {
     fontFamily: ['"Press Start 2P"', 'sans-serif'].join(','),
-    fontSize: 16,
     fontWeightRegular: 400,
     body1: {
       color: '#FFFFFF',
@@ -178,6 +177,50 @@ export const theme = createTheme({
     MuiButtonBase: {
       defaultProps: {
         LinkComponent: LinkBehavior,
+      },
+      styleOverrides: {
+        root: {
+          fontSize: '1rem',
+          lineHeight: '1.4',
+          paddingTop: '1rem',
+          paddingBottom: '1rem',
+          [mediaBreakpoint.xs]: {
+            fontSize: '1rem',
+            lineHeight: '1.4',
+            paddingTop: '1rem',
+            paddingBottom: '0.4rem',
+          },
+          [mediaBreakpoint.sm]: {
+            fontSize: '1.2rem',
+            lineHeight: '1.4',
+            paddingTop: '1rem',
+            paddingBottom: '0.4rem',
+          },
+          [mediaBreakpoint.md]: {
+            fontSize: '1.4rem',
+            lineHeight: '1.4',
+            paddingTop: '1rem',
+            paddingBottom: '0.4rem',
+          },
+          [mediaBreakpoint.lg]: {
+            fontSize: '1.6rem',
+            lineHeight: '1.4',
+            paddingTop: '1.4rem',
+            paddingBottom: '0.8rem',
+          },
+          [mediaBreakpoint.xl]: {
+            fontSize: '1.8rem',
+            lineHeight: '1.4',
+            paddingTop: '1.4rem',
+            paddingBottom: '0.8rem',
+          },
+          [mediaBreakpoint.xxl]: {
+            fontSize: '2rem',
+            lineHeight: '1.4',
+            paddingTop: '1.4rem',
+            paddingBottom: '0.8rem',
+          },
+        },
       },
     },
 

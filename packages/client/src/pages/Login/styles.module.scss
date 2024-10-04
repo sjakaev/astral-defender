@@ -1,19 +1,36 @@
+@import '../../assets/scss/mixins.scss';
+
 .login {
   height: 100vh;
   background-image: url('/images/AstralDefenderBG.png');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center bottom;
   image-rendering: pixelated;
+
+  @include xl {
+    background-size: cover;
+  }
 }
 
 .container {
   height: 100%;
-  width: 33.333333%;
+  width: 100%;
   margin-left: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #2f464ab2;
+  background-color: #2f464af6;
+
+  @include lg {
+    width: 50%;
+    background-color: #2f464ab2;
+  }
+
+  @include xl {
+    width: 34%;
+    background-color: #2f464ab2;
+  }
 }
 
 .wrapper {
@@ -23,19 +40,28 @@
   align-items: center;
   justify-content: center;
   gap: 6.25rem;
+
+  @include md {
+    width: 100%;
+  }
 }
 
 .title {
   text-align: center;
   background: linear-gradient(
     180deg,
-    #982eb1 50%,
+    #595b9e 35%,
     #ffffff 67.91%,
     #4396b5 89.37%
   );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  @include xl {
+    width: 100%;
+    background-color: #2f464ab2;
+  }
 }
 
 .form {

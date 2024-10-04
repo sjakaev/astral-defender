@@ -5,9 +5,12 @@ import styles from './styles.module.scss'
 
 const breakpointSizes = {
   fontSize: {
-    xxl: '7rem',
-    xl: '6.75rem',
-    xs: '5.5rem',
+    xxl: '10.2rem',
+    xl: '8.2rem',
+    lg: '7rem',
+    md: '5rem',
+    sm: '4rem',
+    xs: '3rem',
   },
 }
 
@@ -27,7 +30,7 @@ function MainMenu() {
         Astral Defender
       </Typography>
       <div className={styles['main-menu_buttons']}>
-        <Button href="/game" variant="contained">
+        <Button href="/game" variant="contained" size="large">
           Start Game
         </Button>
       </div>

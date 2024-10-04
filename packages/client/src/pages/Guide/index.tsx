@@ -4,6 +4,17 @@ import { Typography } from '@mui/material'
 import PreviousPageBtn from '../../components/PreviousPageBtn'
 import styles from './styles.module.scss'
 
+const breakpointSizes = {
+    fontSize: {
+      xxl: '2rem',
+      xl: '2rem',
+      lg: '2rem',
+      md: '1rem',
+      sm: '1rem',
+      xs: '1rem',
+    },
+  }
+
 const Guide = () => {
   return (
     <section className={styles.section}>
@@ -16,30 +27,30 @@ const Guide = () => {
       <div className={clsx('container', styles.wrapper)}>
         <div className={styles.header}>
           <PreviousPageBtn />
-          <Typography variant="h4">Level progress</Typography>
+          <Typography sx={breakpointSizes} variant="h4">Level progress</Typography>
         </div>
-        <img className={styles.image} src="images/guide.png" alt="" />
+        <img className={styles.image} src="images/guide.png" alt="guide" />
         <ul className={styles.monsterList}>
-          <li>
-            <img src="images/monster1.png" alt="monster-john" />
+          <li className={styles.monsterListItem}>
+            <img className={styles.monsterListImage} src="images/monster1.png" alt="monster-john" />
             <span>1 lvl</span>
             <span>2 hp</span>
             <span>0 min</span>
           </li>
-          <li>
-            <img src="images/monster2.png" alt="monster-arnold" />
+          <li className={styles.monsterListItem}>
+            <img className={styles.monsterListImage} src="images/monster2.png" alt="monster-arnold" />
             <span>2 lvl</span>
             <span>6 hp</span>
             <span>2 min</span>
           </li>
-          <li>
-            <img src="images/monster3.png" alt="monster-pit" />
+          <li className={styles.monsterListItem}>
+            <img className={styles.monsterListImage} src="images/monster3.png" alt="monster-pit" />
             <span>3 lvl</span>
             <span>10 hp</span>
             <span>4 min</span>
           </li>
-          <li>
-            <img src="images/monster4.png" alt="monster-alex" />
+          <li className={styles.monsterListItem}>
+            <img className={styles.monsterListImage} src="images/monster4.png" alt="monster-alex" />
             <span>4 lvl</span>
             <span>14 hp</span>
             <span>6 min</span>
