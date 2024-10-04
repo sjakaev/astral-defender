@@ -1,41 +1,41 @@
-### Как запускать?
+### How to run?
 
-1. Убедитесь что у вас установлен `node` и `docker`
-2. Выполните команду `yarn bootstrap` - это обязательный шаг, без него ничего работать не будет :)
-3. Выполните команду `yarn dev`
-4. Выполните команду `yarn dev --scope=client` чтобы запустить только клиент
-5. Выполните команду `yarn dev --scope=server` чтобы запустить только server
+1. Make sure you have `node` and `docker` installed
+2. Run the command `yarn bootstrap` - this is a mandatory step, without it nothing will work :)
+3. Run the command `yarn dev`
+4. Run the command `yarn dev --scope=client` to start only the client
+5. Run the command `yarn dev --scope=server` to start only the server
 
-### Как добавить зависимости?
+### How to add dependencies?
 
-В этом проекте используется `monorepo` на основе [`lerna`](https://github.com/lerna/lerna)
+This project uses `monorepo` based on [`lerna`](https://github.com/lerna/lerna)
 
-Чтобы добавить зависимость для клиента
+To add a dependency for the client
 `yarn lerna add {your_dep} --scope client`
 
-Для сервера
+For the server
 `yarn lerna add {your_dep} --scope server`
 
-И для клиента и для сервера
+For both client and server
 `yarn lerna add {your_dep}`
 
-Если вы хотите добавить dev зависимость, проделайте то же самое, но с флагом `dev`
+If you want to add a dev dependency, do the same but with the `dev` flag
 `yarn lerna add {your_dep} --dev --scope client`
 
-Удаление зависимости
+Removing a dependency
 `yarn lerna exec 'yarn remove {your_dep}' --scope client`
 
-### Тесты
+### Tests
 
-Для клиента используется [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro/)
+For the client, [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro/) is used
 
 `yarn test`
 
-### Линтинг
+### Linting
 
 `yarn lint`
 
-### Форматирование prettier
+### Prettier formatting
 
 `yarn format`
 
@@ -43,130 +43,121 @@
 
 `yarn build`
 
-И чтобы посмотреть что получилось
+And to see what happened
 
 `yarn preview --scope client`
 `yarn preview --scope server`
 
-## Хуки
+## Hooks
 
-В проекте используется [lefthook](https://github.com/evilmartians/lefthook)
-Если очень-очень нужно пропустить проверки, используйте `--no-verify` (но не злоупотребляйте :)
+The project uses [lefthook](https://github.com/evilmartians/lefthook)
+If you really, really need to skip checks, use `--no-verify` (but don't abuse it :)
 
-## Ой, ничего не работает :(
+## Auto-deploy static on vercel
 
-Откройте issue, я приду :)
+Register an account on [vercel](https://vercel.com/)
+Follow the [instructions](https://vitejs.dev/guide/static-deploy.html#vercel-for-git)
+Specify `packages/client` as the `root directory`
 
-## Автодеплой статики на vercel
+All your PRs will be automatically deployed on vercel. The URL will be provided by the deploying bot
 
-Зарегистрируйте аккаунт на [vercel](https://vercel.com/)
-Следуйте [инструкции](https://vitejs.dev/guide/static-deploy.html#vercel-for-git)
-В качестве `root directory` укажите `packages/client`
+## Production environment in docker
 
-Все ваши PR будут автоматически деплоиться на vercel. URL вам предоставит деплоящий бот
+Before the first run, execute `node init.js`
 
-## Production окружение в докере
+`docker compose up` - will start three services
 
-Перед первым запуском выполните `node init.js`
+1. nginx, serving client static files (client)
+2. node, your server (server)
+3. postgres, your database (postgres)
 
-`docker compose up` - запустит три сервиса
+If you need only one service, just specify which one in the command
+`docker compose up {service_name}`, for example `docker compose up server`
 
-1. nginx, раздающий клиентскую статику (client)
-2. node, ваш сервер (server)
-3. postgres, вашу базу данных (postgres)
+### Build
 
-Если вам понадобится только один сервис, просто уточните какой в команде
-`docker compose up {sevice_name}`, например `docker compose up server`
+`docker compose build` - build all services (for building and subsequent launch - `docker compose up --build`)
 
-### Сборка
+Building a specific service:
+`docker compose build {service_name}`, for example `docker compose build`
 
-`docker compose build` - сборка всех сервисов (для сборки и послдедующего запуска - `docker compose up --build`)
+### Stop
 
-Сборка отдельного сервиса:
-`docker compose build {sevice_name}`, например `docker compose build`
+`docker compose stop` - stop all services
 
-### Остановка
+Stopping a specific service:
+`docker compose stop {service_name}`, for example `docker compose stop server`
 
-`docker compose stop` - остановка всех сервисов
+### Other
 
-Остановка отдельного сервиса:
-`docker compose stop {sevice_name}`, например `docker compose stop server`
+`docker ps` or `docker compose ps` - view running containers or services
 
-### Прочее
+`docker ps -a` or `docker compose ps -a` - view all existing containers or services
 
-`docker ps` или `docker compose ps` - просмотр запущенных контейнеров или сервисов
-
-`docker ps -a` или `docker compose ps -a` - просмотр всех существующих контейнеров или сервисов
-
-`docker system prune --all` - для очистки ранее созданных контейнеров и кэша
+`docker system prune --all` - to clean up previously created containers and cache
 
 ## Sequelize
 
-В данный момент обновление (изменение) моделей существующих в БД таблиц никак эти таблицы не будут менять.
+Currently, updating (changing) models of existing tables in the database will not change these tables in any way.
 
-В файле `server/db.ts` можно установить:
+In the `server/db.ts` file, you can set:
 
-`sequelize.sync({ force: true })` - сброс всей текущей БД (все уже имеющиеся данные будут удалены) и пересоздание всех существующих таблиц
+`sequelize.sync({ force: true })` - reset the entire current database (all existing data will be deleted) and recreate all existing tables
 
-`sequelize.sync({ alter: true })` - внесение измений в существующие таблицы
+`sequelize.sync({ alter: true })` - make changes to existing tables
 
-## Описание игры
+## Game description
 
-### Основные элементы игры:
+### Main elements of the game:
 
-1. **Стартовый экран:**
+1. **Start screen:**
 
-   - Игра начинается со стартового экрана, на котором расположено главное меню.
+   - The game starts with a start screen that has the main menu.
 
-2. **Игровой процесс:**
+2. **Gameplay:**
 
-   - После нажатия кнопки "Start game", игрок попадает на игровое бесконечное поле, по которому нужно двигаться при помощи четырех кнопок на клавиатуре: W, A, S, D.
-   - Выстрелы осуществляются в направлении движения игрока.
+   - After pressing the "Start game" button, the player enters an endless game field, where they need to move using four keyboard buttons: W, A, S, D.
+   - Shooting is done in the direction of the player's movement.
 
-3. **Управление:**
+3. **Controls:**
 
-   - W: движение вперед с автоматическими выстрелами вперед.
-   - S: движение назад с автоматическими выстрелами назад.
-   - A: движение влево с выстрелами влево.
-   - D: движение вправо с выстрелами вправо.
+   - W: move forward with automatic shooting forward.
+   - S: move backward with automatic shooting backward.
+   - A: move left with shooting to the left.
+   - D: move right with shooting to the right.
 
-4. **Диагональное движение:**
+4. **Diagonal movement:**
 
-   - W + A: диагональное движение вверх и влево.
-   - A + S: диагональное движение вниз и влево.
-   - S + D: диагональное движение вниз и вправо.
-   - D + W: диагональное движение вверх и вправо.
+   - W + A: diagonal movement up and left.
+   - A + S: diagonal movement down and left.
+   - S + D: diagonal movement down and right.
+   - D + W: diagonal movement up and right.
 
-5. **Враги:**
+5. **Enemies:**
 
-   - Мини Жуки (2 хп) появляются на 0 минуте.
-   - Жуки (4 хп) появляются на 2 минуте.
-   - Жучары (10 хп) появляются на 4 минуте.
-   - Мегажуки (25 хп) появляются на 6 минуте.
+   - Mini Monsters (2 hp) appear at 0 minutes.
+   - Minsters (6 hp) appear at 2 minutes.
+   - Big Minsters (10 hp) appear at 4 minutes.
+   - Mega Minsters (14 hp) appear at 6 minutes.
 
-6. **Улучшения при достижении нового уровня:**
-   - **Сердца:** Увеличивает кол-во здоровья на 1
-   - **Урон от пуль:** Увеличивает урон от пуль на 30% от текущего урона.
-   - **Скорость перезарядки:** Уменьшает скорость перезарядки оружия на 10% от текущей скорости.
-   - **Скорость передвижения:** Увеличивает скорость передвижения игрока на 10% от текущего уровня.
-   - **Дальность магнита кристаллов:** Увеличивает дальность магнита, позволяя собирать кристаллы на большем расстоянии.
-   - **Thanos snap:** Половина всех врагов умирает.
-   - **Огнемет:** В течение 10 секунд игрок получает высокую скорость перезарядки и большой урон от пуль.
+6. **Upgrades when reaching a new level:**
+   - **Hearts:** Increases health by 1
+   - **Bullet damage:** Increases bullet damage by 30% of the current damage.
+   - **Reload speed:** Decreases weapon reload speed by 10% of the current speed.
+   - **Movement speed:** Increases player movement speed by 10% of the current level.
+   - **Crystal magnet range:** Increases the magnet range, allowing you to collect crystals from a greater distance.
+   - **Thanos snap:** Half of all enemies die.
+   - **Flamethrower:** For 10 seconds, the player gets a high reload speed and high bullet damage.
 
-### Игровой экран:
+### Game screen:
 
-- **Шкала уровня и кристаллов:** Показывает прогресс игрока к повышению уровня.
-- **Отчет времени:** Показывает прошедшее время игры.
-- **Иконки улучшений:** Отображают полученные игроком улучшения.
-- **Количество убитых врагов и сердец:** Показывает статистику игрока.
-- **Кнопка "Выйти":** Позволяет покинуть игру и вернуться к стартовому экрану.
+- **Level and crystal scale:** Shows the player's progress towards leveling up.
+- **Time counter:** Shows the elapsed game time.
+- **Upgrade icons:** Display the upgrades the player has received.
+- **Number of killed enemies and hearts:** Shows the player's statistics.
+- **"Exit" button:** Allows you to leave the game and return to the start screen.
 
-### Окна в игре:
+### Windows in the game:
 
-- **Игра окончена:** Всплывает при смерти игрока, с возможностью вернуться к стартовому экрану или начать новую игру
+- **Game over:** Pops up when the player dies, with the option to return to the start screen or start a new game
 
-### Видео с демонстрацией реализации:
-
-Спринт 5-6: https://disk.yandex.ru/i/IjqTjC1OSPC_tw
-
-Спринт 7-8: https://disk.yandex.ru/i/AyLonOpc7n_RYQ
