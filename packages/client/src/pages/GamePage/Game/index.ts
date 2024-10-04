@@ -92,11 +92,11 @@ class Game implements IGame {
 
     const updatePlayerVelocity = () => {
       this.Player.vx =
-        (pressedKeys['KeyD'] ? this.Player.speed : 0) -
-        (pressedKeys['KeyA'] ? this.Player.speed : 0)
+        (pressedKeys['KeyD'] || pressedKeys['ArrowRight'] ? this.Player.speed : 0) -
+        (pressedKeys['KeyA'] || pressedKeys['ArrowLeft'] ? this.Player.speed : 0)
       this.Player.vy =
-        (pressedKeys['KeyS'] ? this.Player.speed : 0) -
-        (pressedKeys['KeyW'] ? this.Player.speed : 0)
+        (pressedKeys['KeyS'] || pressedKeys['ArrowDown'] ? this.Player.speed : 0) -
+        (pressedKeys['KeyW'] || pressedKeys['ArrowUp'] ? this.Player.speed : 0)
     }
 
     document.addEventListener('keydown', handleKeyDown)
