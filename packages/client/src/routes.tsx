@@ -1,6 +1,5 @@
 import Login from './pages/Login'
 import MainMenu from './pages/MainMenu'
-import ProfilePage from './pages/Profile'
 import ErrorPage404 from './pages/ErrorPage404'
 import ErrorPage from './pages/Error'
 import ErrorPage500 from './pages/Error500'
@@ -43,10 +42,6 @@ const routes = [
   {
     path: '/',
     element: <Login />,
-  },
-  {
-    path: '/profile',
-    element: <ProfilePage />,
   },
   {
     path: '/game',

@@ -11,7 +11,6 @@ import {
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 
-import { fetchUser } from './store/slices/userSlice'
 import { reducer } from './store'
 
 import {
@@ -41,7 +40,6 @@ export const render = async (req: ExpressRequest) => {
   const store = configureStore({
     reducer,
   })
-  await store.dispatch(fetchUser())
 
   const url = createUrl(req)
 

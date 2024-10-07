@@ -1,7 +1,6 @@
 import { Button, Typography } from '@mui/material'
 import style from './styles.module.scss'
 import { Helmet } from 'react-helmet'
-import React from 'react'
 import Clue from '../../components/Clue'
 
 const breakpointSizes = {
