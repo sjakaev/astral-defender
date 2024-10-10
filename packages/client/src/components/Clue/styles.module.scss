@@ -8,4 +8,9 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+
+  @include xs {
+    right: 2.25rem;
+    bottom: 2.25rem;
+  }
 }
