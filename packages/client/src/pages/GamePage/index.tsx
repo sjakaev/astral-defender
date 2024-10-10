@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, useRef } from 'react'
 import { Helmet } from 'react-helmet'
 import Cards from './Game/Cards'
 import styles from './styles.module.scss'
@@ -10,12 +10,16 @@ import IconButton from '@mui/material/IconButton'
 import FullscreenIcon from '@mui/icons-material/Fullscreen'
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit'
 import { useFullScreen } from '../../hooks/useFullScreen'
+import JoystickComponent from '../../components/JoystickComponent/JoystickComponent';
+import { IJoystickUpdateEvent } from '../../components/JoystickComponent/interfaces'
 
 function GamePage() {
   const [showCards, setShowCards] = useState(false)
   const navigate = useNavigate()
   const [game, setGame] = useState<Game | null>(null)
   const { isFullScreen, toggleFullScreen } = useFullScreen()
+
+  const gameRef = useRef<Game | null>(null);
 
   useEffect(() => {
     if (game === null && typeof window !== 'undefined') {
@@ -28,6 +32,17 @@ function GamePage() {
     [game]
   )
 
+  const handleJoystickMove = useCallback(
+    (event: IJoystickUpdateEvent) => {
+      gameRef.current?.handleJoystickMove(event);
+    },
+    []
+  );
+
+  const handleJoystickStop = useCallback(() => {
+    gameRef.current?.handleJoystickStop();
+  }, []);
+
   return (
     <div className={styles.canvas_container}>
       <Helmet>
@@ -37,6 +52,7 @@ function GamePage() {
       </Helmet>
       {showCards && <Cards upgradePick={handleUpgrade} />}
       {game && <Canvas game={game} />}
+      <JoystickComponent onMove={handleJoystickMove} onStop={handleJoystickStop} />
       <div className={styles.button_container}>
         <IconButton
           onClick={toggleFullScreen}

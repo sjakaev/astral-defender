@@ -9,6 +9,7 @@ import Enemies from './Enemies'
 import Exps from './Exp'
 import Bullets from './Bullets'
 import Background from './Background'
+import { IJoystickUpdateEvent } from '../../../components/JoystickComponent/interfaces'
 
 class Game implements IGame {
   Camera: Camera
@@ -61,7 +62,7 @@ class Game implements IGame {
     ).then(() => {
       this.initAnimate()
 
-      this.destroyers.push(this.initLinter())
+      this.destroyers.push(this.initListeners())
 
       this.lastTimerUpdate = performance.now()
       this.updateTimer()
@@ -76,11 +77,8 @@ class Game implements IGame {
     }
   }
 
-  private initLinter() {
+  private initListeners() {
     const pressedKeys: Record<string, boolean> = {}
-
-    let touchStartX = 0
-    let touchStartY = 0
 
     const handleKeyDown = (event: KeyboardEvent) => {
       pressedKeys[event.code] = true
@@ -90,42 +88,6 @@ class Game implements IGame {
     const handleKeyUp = (event: KeyboardEvent) => {
       pressedKeys[event.code] = false
       updatePlayerVelocity()
-    }
-
-    const handleTouchStart = (event: TouchEvent) => {
-      if (event.touches.length >= 1) {
-        const touch = event.touches[0]
-        touchStartX = touch.clientX
-        touchStartY = touch.clientY
-      }
-    }
-
-    const handleTouchMove = (event: TouchEvent) => {
-      event.preventDefault()
-      if (event.touches.length >= 1) {
-        const touch = event.touches[0]
-        const deltaX = touch.clientX - touchStartX
-        const deltaY = touch.clientY - touchStartY
-
-        this.Player.vx += deltaX
-        this.Player.vy += deltaY
-
-        const maxSpeed = this.Player.speed
-        const speedMagnitude = Math.sqrt(this.Player.vx ** 2 + this.Player.vy ** 2)
-        if (speedMagnitude > maxSpeed) {
-          const scale = maxSpeed / speedMagnitude
-          this.Player.vx *= scale
-          this.Player.vy *= scale
-        }
-
-        touchStartX = touch.clientX
-        touchStartY = touch.clientY
-      }
-    }
-
-    const handleTouchEnd = (event: TouchEvent) => {
-      this.Player.vx = 0
-      this.Player.vy = 0
     }
 
     const updatePlayerVelocity = () => {
@@ -140,17 +102,30 @@ class Game implements IGame {
     document.addEventListener('keydown', handleKeyDown)
     document.addEventListener('keyup', handleKeyUp)
 
-    document.addEventListener('touchstart', handleTouchStart, { passive: false })
-    document.addEventListener('touchmove', handleTouchMove, { passive: false })
-    document.addEventListener('touchend', handleTouchEnd)
-
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
       document.removeEventListener('keyup', handleKeyUp)
-      document.removeEventListener('touchstart', handleTouchStart)
-      document.removeEventListener('touchmove', handleTouchMove)
-      document.removeEventListener('touchend', handleTouchEnd)
     }
+  }
+
+  handleJoystickMove = (event: IJoystickUpdateEvent) => {
+    const x = event.x ?? 0
+    const y = event.y ?? 0
+    const MAX_DISTANCE = 50
+
+    const angleInRadians = Math.atan2(y, x)
+    const force = event.distance ?? 0
+
+    const normalizedForce = Math.min(force / MAX_DISTANCE, 1)
+
+    this.Player.vx = Math.cos(angleInRadians) * normalizedForce * this.Player.speed
+    this.Player.vy = Math.sin(angleInRadians) * normalizedForce * this.Player.speed
+  }
+
+
+  handleJoystickStop = () => {
+    this.Player.vx = 0
+    this.Player.vy = 0
   }
 
   private updateTimer() {
