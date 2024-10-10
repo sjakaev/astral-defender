@@ -8,7 +8,6 @@ import path from 'path'
 import { HelmetData } from 'react-helmet'
 import serialize from 'serialize-javascript'
 import cookieParser from 'cookie-parser'
-import { createProxyMiddleware } from 'http-proxy-middleware'
 
 const port = process.env.CLIENT_PORT || 3000
 const clientPath = path.join(__dirname, '..')
@@ -28,13 +27,6 @@ async function createServer() {
     })
 
     app.use(vite.middlewares)
-
-    const backendProxy = createProxyMiddleware({
-      target: process.env.EXTERNAL_SERVER_URL,
-      changeOrigin: true,
-    })
-
-    app.all('/api/v2/*', backendProxy)
   } else {
     app.use(
       express.static(path.join(clientPath, 'dist/client'), { index: false })

@@ -57,8 +57,6 @@ const routes = [
   },
 ].map((item: Route) => ({
   ...item,
-  // TODO: Заменить на нужных страницах fetchData для загрузки данных с сервера
-  //       для отображения данных на странице при первом рендеринге
   fetchData: item?.fetchData ? item.fetchData : () => Promise.resolve(),
   errorElement: errorBoundary,
 }))

@@ -19,7 +19,7 @@ function Login() {
     <section className={style.login}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Sign In</title>
+        <title>Astral Defender</title>
         <meta name="description" content="Sign In" />
       </Helmet>
       <div className={style.container}>

@@ -7,7 +7,14 @@ export const createContext = (req: ExpressRequest): PageInitContext => ({
 })
 
 export function createEmotionCache() {
-  return createCache({ key: 'ssr-css' })
+  const cache = createCache({ key: 'ssr-css' })
+
+  if (typeof window !== 'undefined') {
+    cache.sheet.container = document.head
+    cache.sheet.hydrate(document.querySelectorAll('style[data-emotion]'))
+  }
+
+  return cache
 }
 
 export const createUrl = (req: ExpressRequest) => {
