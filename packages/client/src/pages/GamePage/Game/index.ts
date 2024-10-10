@@ -25,7 +25,7 @@ class Game implements IGame {
   timer = 0
   lastTimerUpdate?: number
   backgroundSpeed = 2
-  background: Background;
+  background: Background
 
   pause = false
   spawnRate = 100
@@ -77,8 +77,10 @@ class Game implements IGame {
   }
 
   private initLinter() {
-    // Creating a listener to track pressed keys
     const pressedKeys: Record<string, boolean> = {}
+
+    let touchStartX = 0
+    let touchStartY = 0
 
     const handleKeyDown = (event: KeyboardEvent) => {
       pressedKeys[event.code] = true
@@ -88,6 +90,42 @@ class Game implements IGame {
     const handleKeyUp = (event: KeyboardEvent) => {
       pressedKeys[event.code] = false
       updatePlayerVelocity()
+    }
+
+    const handleTouchStart = (event: TouchEvent) => {
+      if (event.touches.length >= 1) {
+        const touch = event.touches[0]
+        touchStartX = touch.clientX
+        touchStartY = touch.clientY
+      }
+    }
+
+    const handleTouchMove = (event: TouchEvent) => {
+      event.preventDefault()
+      if (event.touches.length >= 1) {
+        const touch = event.touches[0]
+        const deltaX = touch.clientX - touchStartX
+        const deltaY = touch.clientY - touchStartY
+
+        this.Player.vx += deltaX
+        this.Player.vy += deltaY
+
+        const maxSpeed = this.Player.speed
+        const speedMagnitude = Math.sqrt(this.Player.vx ** 2 + this.Player.vy ** 2)
+        if (speedMagnitude > maxSpeed) {
+          const scale = maxSpeed / speedMagnitude
+          this.Player.vx *= scale
+          this.Player.vy *= scale
+        }
+
+        touchStartX = touch.clientX
+        touchStartY = touch.clientY
+      }
+    }
+
+    const handleTouchEnd = (event: TouchEvent) => {
+      this.Player.vx = 0
+      this.Player.vy = 0
     }
 
     const updatePlayerVelocity = () => {
@@ -102,9 +140,16 @@ class Game implements IGame {
     document.addEventListener('keydown', handleKeyDown)
     document.addEventListener('keyup', handleKeyUp)
 
+    document.addEventListener('touchstart', handleTouchStart, { passive: false })
+    document.addEventListener('touchmove', handleTouchMove, { passive: false })
+    document.addEventListener('touchend', handleTouchEnd)
+
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
       document.removeEventListener('keyup', handleKeyUp)
+      document.removeEventListener('touchstart', handleTouchStart)
+      document.removeEventListener('touchmove', handleTouchMove)
+      document.removeEventListener('touchend', handleTouchEnd)
     }
   }
 
