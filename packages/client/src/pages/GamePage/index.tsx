@@ -13,13 +13,18 @@ import { useFullScreen } from '../../hooks/useFullScreen'
 import JoystickComponent from '../../components/JoystickComponent/JoystickComponent'
 import { IJoystickUpdateEvent } from '../../components/JoystickComponent/interfaces'
 
+const breakpointStyles = {
+  display: {
+    md: 'inline-block',
+    xs: 'none',
+  },
+}
+
 function GamePage() {
   const [showCards, setShowCards] = useState(false)
   const navigate = useNavigate()
   const [game, setGame] = useState<Game | null>(null)
   const { isFullScreen, toggleFullScreen } = useFullScreen()
-
-  const gameRef = useRef<Game | null>(null)
 
   useEffect(() => {
     if (game === null && typeof window !== 'undefined') {
@@ -67,7 +72,11 @@ function GamePage() {
             <FullscreenIcon sx={{ fontSize: '4rem' }} />
           )}
         </IconButton>
-        <Button href="/main_menu" variant="contained" color="primary">
+        <Button
+          sx={breakpointStyles}
+          href="/main_menu"
+          variant="contained"
+          color="primary">
           Exit
         </Button>
       </div>
