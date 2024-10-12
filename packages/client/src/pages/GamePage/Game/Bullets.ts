@@ -115,14 +115,26 @@ class Bullets {
   }
 
   createBullet() {
-    if (this.game.GameTick % this.game.Player.reloadTime == 0) {
+    if (this.game.GameTick % this.game.Player.reloadTime === 0) {
+      let dirX = this.game.Player.lastDirectionX
+      let dirY = this.game.Player.lastDirectionY
+
+      const playerVx = this.game.Player.vx
+      const playerVy = this.game.Player.vy
+      const magnitude = Math.sqrt(playerVx * playerVx + playerVy * playerVy)
+
+      if (magnitude !== 0) {
+        dirX = playerVx / magnitude
+        dirY = playerVy / magnitude
+      }
+
       this.state.push({
         width: 70,
         height: 70,
         x: this.game.Player.x,
         y: this.game.Player.y,
-        vx: this.game.Player.lastDirectionX,
-        vy: this.game.Player.lastDirectionY,
+        vx: dirX,
+        vy: dirY,
         damage: this.game.Player.damage,
         speed: 5 + this.game.Player.speed,
         frameSize: 16,

@@ -78,44 +78,38 @@ class Player {
       if (this.vx === 0 && this.vy === 0) {
         this.frame = 0
       } else {
-        if (this.vy > 0) {
-          this.frameLine = 0
-          this.lastDirectionY = 1
-          this.lastDirectionX = 0
-        } else if (this.vy < 0) {
-          this.frameLine = 16 * 4
-          this.lastDirectionY = -1
-          this.lastDirectionX = 0
+        let angle = Math.atan2(-this.vy, this.vx) * (180 / Math.PI)
+        if (angle < 0) angle += 360
+
+        let frameLineIndex = 0
+
+        if (angle >= 247.5 && angle < 292.5) {
+          frameLineIndex = 0
+        } else if (angle >= 202.5 && angle < 247.5) {
+          frameLineIndex = 1
+        } else if (angle >= 157.5 && angle < 202.5) {
+          frameLineIndex = 2
+        } else if (angle >= 112.5 && angle < 157.5) {
+          frameLineIndex = 3
+        } else if (angle >= 67.5 && angle < 112.5) {
+          frameLineIndex = 4
+        } else if (angle >= 22.5 && angle < 67.5) {
+          frameLineIndex = 5
+        } else if (
+          (angle >= 0 && angle < 22.5) ||
+          (angle >= 337.5 && angle <= 360)
+        ) {
+          frameLineIndex = 6
+        } else if (angle >= 292.5 && angle < 337.5) {
+          frameLineIndex = 7
         }
 
-        if (this.vx < 0) {
-          this.frameLine = this.vy === 0 ? 16 * 2 : 16
-          this.lastDirectionX = -1
-          this.lastDirectionY = 0
-        } else if (this.vx > 0) {
-          this.frameLine = this.vy === 0 ? 16 * 6 : 16 * 7
-          this.lastDirectionX = 1
-          this.lastDirectionY = 0
-        }
+        this.frameLine = frameLineIndex * this.frameSize
 
-        if (this.vx !== 0 && this.vy !== 0) {
-          if (this.vx < 0 && this.vy < 0) {
-            this.frameLine = 16 * 3
-            this.lastDirectionX = -1
-            this.lastDirectionY = -1
-          } else if (this.vx < 0 && this.vy > 0) {
-            this.frameLine = 16
-            this.lastDirectionX = -1
-            this.lastDirectionY = 1
-          } else if (this.vx > 0 && this.vy < 0) {
-            this.frameLine = 16 * 5
-            this.lastDirectionX = 1
-            this.lastDirectionY = -1
-          } else if (this.vx > 0 && this.vy > 0) {
-            this.frameLine = 16 * 7
-            this.lastDirectionX = 1
-            this.lastDirectionY = 1
-          }
+        const magnitude = Math.sqrt(this.vx * this.vx + this.vy * this.vy)
+        if (magnitude !== 0) {
+          this.lastDirectionX = this.vx / magnitude
+          this.lastDirectionY = this.vy / magnitude
         }
       }
 

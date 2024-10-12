@@ -92,10 +92,16 @@ class Game implements IGame {
 
     const updatePlayerVelocity = () => {
       this.Player.vx =
-        (pressedKeys['KeyD'] || pressedKeys['ArrowRight'] ? this.Player.speed : 0) -
-        (pressedKeys['KeyA'] || pressedKeys['ArrowLeft'] ? this.Player.speed : 0)
+        (pressedKeys['KeyD'] || pressedKeys['ArrowRight']
+          ? this.Player.speed
+          : 0) -
+        (pressedKeys['KeyA'] || pressedKeys['ArrowLeft']
+          ? this.Player.speed
+          : 0)
       this.Player.vy =
-        (pressedKeys['KeyS'] || pressedKeys['ArrowDown'] ? this.Player.speed : 0) -
+        (pressedKeys['KeyS'] || pressedKeys['ArrowDown']
+          ? this.Player.speed
+          : 0) -
         (pressedKeys['KeyW'] || pressedKeys['ArrowUp'] ? this.Player.speed : 0)
     }
 
@@ -109,19 +115,15 @@ class Game implements IGame {
   }
 
   handleJoystickMove = (event: IJoystickUpdateEvent) => {
-    const x = event.x ?? 0
-    const y = event.y ?? 0
-    const MAX_DISTANCE = 50
+    const { x, y } = event
 
-    const angleInRadians = Math.atan2(y, x)
-    const force = event.distance ?? 0
+    const magnitude = Math.sqrt(x! * x! + y! * y!)
+    const normalizedX = x! / magnitude
+    const normalizedY = y! / magnitude
 
-    const normalizedForce = Math.min(force / MAX_DISTANCE, 1)
-
-    this.Player.vx = Math.cos(angleInRadians) * normalizedForce * this.Player.speed
-    this.Player.vy = Math.sin(angleInRadians) * normalizedForce * this.Player.speed
+    this.Player.vx = normalizedX * this.Player.speed
+    this.Player.vy = -normalizedY * this.Player.speed
   }
-
 
   handleJoystickStop = () => {
     this.Player.vx = 0
@@ -150,7 +152,13 @@ class Game implements IGame {
 
   render(ctx: CanvasRenderingContext2D) {
     this.Camera.cameraMovement()
-    this.background.draw(ctx, -this.Camera.x, -this.Camera.y, this.CanvasWidth, this.CanvasHeight)
+    this.background.draw(
+      ctx,
+      -this.Camera.x,
+      -this.Camera.y,
+      this.CanvasWidth,
+      this.CanvasHeight
+    )
     this.Bullets.renderBullet(ctx)
     this.Bullets.createBullet()
     this.Enemies.renderEnemies(ctx)
