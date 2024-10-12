@@ -192,13 +192,42 @@ class Game implements IGame {
     ctx.save()
     ctx.strokeStyle = 'white'
     ctx.fillStyle = '#242424'
-    ctx.font = '24px pixel'
-    ctx.fillText(convertSeconds(this.timer), this.CanvasWidth / 2 - 40, 50)
-    ctx.strokeText(convertSeconds(this.timer), this.CanvasWidth / 2 - 40, 50)
-    ctx.fillText('HP: ' + this.Player.hp, this.CanvasWidth - 85, 50)
-    ctx.strokeText('HP: ' + this.Player.hp, this.CanvasWidth - 85, 50)
-    ctx.fillText('LVL: ' + this.Player.level, 8, 50)
-    ctx.strokeText('LVL: ' + this.Player.level, 8, 50)
+
+    // Calculate the font size as 2% of the height of the canvass
+    const fontSize = Math.max(14, this.CanvasHeight * 0.025) // Min size 14px
+    ctx.font = `${fontSize}px pixel`
+    ctx.textBaseline = 'top'
+
+    // Scale-aware text positioning
+    // Use relative positions based on fontSize
+    const timerText = convertSeconds(this.timer)
+    const hpText = `HP: ${this.Player.hp}`
+    const lvlText = `LVL: ${this.Player.level}`
+
+    // Timer center
+    const timerX = this.CanvasWidth / 2 - ctx.measureText(timerText).width / 2
+    const timerY = fontSize + 10 // Top indent
+
+    // HP on the right
+    const hpX = this.CanvasWidth - ctx.measureText(lvlText).width - 10
+    const hpY = fontSize + 10
+
+    // LVL on the left
+    const lvlX = 10
+    const lvlY = fontSize + 10
+
+    // Timer rendering
+    ctx.fillText(timerText, timerX, timerY)
+    ctx.strokeText(timerText, timerX, timerY)
+
+    // HP rendering
+    ctx.fillText(hpText, hpX, hpY)
+    ctx.strokeText(hpText, hpX, hpY)
+
+    // LVL rendering
+    ctx.fillText(lvlText, lvlX, lvlY)
+    ctx.strokeText(lvlText, lvlX, lvlY)
+
     ctx.restore()
   }
 
