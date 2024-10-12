@@ -7,8 +7,15 @@
 
 .button_container {
   position: absolute !important;
-  bottom: 40px;
-  right: 76px;
+  bottom: 20px;
+  right: 0;
+  left: 10px;
+
+  @include md {
+    bottom: 40px;
+    right: 76px;
+    left: auto;
+  }
 }
 
 @font-face {

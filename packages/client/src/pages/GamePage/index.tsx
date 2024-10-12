@@ -60,7 +60,7 @@ function GamePage() {
         <IconButton
           onClick={toggleFullScreen}
           disableRipple={true}
-          sx={{ padding: '0.3rem', marginRight: '2rem' }}>
+          sx={{ padding: '0.3rem', marginRight: '1rem' }}>
           {isFullScreen ? (
             <FullscreenExitIcon sx={{ fontSize: '4rem' }} />
           ) : (
