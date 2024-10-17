@@ -1,0 +1,45 @@
+name: Deploy on Server
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Docker login
+        run: echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_LOGIN }} --password-stdin
+
+      - name: Docker build
+        run: docker build --no-cache -f Dockerfile.client -t ${{ secrets.DOCKER_HUB_LOGIN }}/astral-defender-client:latest .
+
+      - name: Docker push
+        run: docker push ${{ secrets.DOCKER_HUB_LOGIN }}/astral-defender-client:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Execute remote commands on server
+        run: |
+          ssh -o StrictHostKeyChecking=no root@astral-defender.online '
+            cd /srv/astral-defender &&
+            docker compose down &&
+            git pull &&
+            docker compose pull &&
+            docker compose up -d
+              '
