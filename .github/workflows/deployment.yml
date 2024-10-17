@@ -13,9 +13,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ssh-key-scan: true
-          persist-credentials: false
 
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
@@ -24,7 +21,7 @@ jobs:
 
       - name: Execute remote commands on server
         run: |
-          ssh root@astral-defender.online '
+          ssh -o StrictHostKeyChecking=no root@astral-defender.online '
             cd /srv/astral-defender &&
             ls -la &&
             echo Privet
