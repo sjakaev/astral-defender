@@ -38,5 +38,8 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no root@astral-defender.online '
             cd /srv/astral-defender &&
-            docker pull ${{ secrets.DOCKER_HUB_LOGIN }}/astral-defender-client:latest
+            docker compose down &&
+            git pull &&
+            docker compose pull &&
+            docker compose up -d
               '
