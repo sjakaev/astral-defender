@@ -24,6 +24,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -37,9 +38,5 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no root@astral-defender.online '
             cd /srv/astral-defender &&
-            ls -la &&
-            echo "docker compose down" &&
-            echo "docker compose pull" &&
-            echo "docker compose up -d" &&
-            echo "docker pull ${{ secrets.DOCKER_HUB_LOGIN }}/astral-defender-client:latest"
+            docker pull ${{ secrets.DOCKER_HUB_LOGIN }}/astral-defender-client:latest
               '
