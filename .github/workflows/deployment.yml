@@ -24,7 +24,7 @@ jobs:
 
       - name: Execute remote commands on server
         run: |
-          ssh astral-defender.online '
+          ssh root@astral-defender.online '
             cd /srv/astral-defender &&
             ls -la &&
             echo Privet
