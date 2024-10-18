@@ -1,8 +1,8 @@
 .joystick {
   display: block;
   position: absolute;
-  bottom: 30px;
-  right: 30px;
+  bottom: 35px;
+  right: 35px;
   z-index: 1000;
 
   @include md {
