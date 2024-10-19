@@ -63,7 +63,7 @@ function Cards({ upgradePick }: CardsProps) {
       {cards.map(el => (
         <div
           className={styles.card}
-          style={{ backgroundColor: el.id > 4 ? '#ffd97f' : '#96c4f9' }}
+          style={{ backgroundColor: el.id > 4 ? '#c8adf4' : '#96c4f9' }}
           onClick={() => upgradePick(el.id)}
           key={'card' + el.id}>
           <div
