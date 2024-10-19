@@ -4,13 +4,15 @@
 
 Welcome to **Astral Defender**—an engaging 2D browser game that combines fast-paced action with strategic upgrades. Developed as part of a collaborative project in the frontend developer course at Yandex, this game showcases my ability to build complex, interactive web applications from the ground up using modern technologies.
 
+![image](https://github.com/user-attachments/assets/c7a146b8-cc78-4a3b-87cf-3792a7ff52a2)
+
 ## 📌 Project Description
 
 **Astral Defender** is a survival shooter game where players navigate an endless space arena, battling waves of increasingly challenging enemies. The game is designed to be both fun and technically impressive, demonstrating expertise in game development, web technologies, and user experience design.
 
 ## 🚀 Live Demo
 
-Play the game here: [Astral Defender Online](https://astral-defender.online/game)
+Play the game here: <a href="https://astral-defender.online/game" target="_blank">Astral Defender</a>
 
 *Note: The game is fully responsive and optimized for both desktop and mobile devices.*
 
@@ -153,6 +155,4 @@ I am open to opportunities and collaboration. Contact me via email: r.sjakaev@gm
 ---
 
 **Thank you for taking the time to explore Astral Defender!**
-
----
 
