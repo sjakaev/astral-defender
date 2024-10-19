@@ -4,15 +4,15 @@ import { Helmet } from 'react-helmet'
 import Clue from '../../components/Clue'
 
 const breakpointSizes = {
-    fontSize: {
-      xxl: '7.2rem',
-      xl: '6.2rem',
-      lg: '6rem',
-      md: '5rem',
-      sm: '4.2rem',
-      xs: '3rem',
-    },
-  }
+  fontSize: {
+    xxl: '7.2rem',
+    xl: '6.2rem',
+    lg: '6rem',
+    md: '5rem',
+    sm: '4.2rem',
+    xs: '3rem',
+  },
+}
 
 function Login() {
   return (
