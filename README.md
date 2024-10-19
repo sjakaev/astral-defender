@@ -1,50 +1,158 @@
-## Game description
+# Astral Defender
 
-### Main elements of the game:
+[![Website Status](https://img.shields.io/website-up-down-green-red/https/astral-defender.online.svg)](https://astral-defender.online/game)
 
-1. **Start screen:**
+Welcome to **Astral Defender**—an engaging 2D browser game that combines fast-paced action with strategic upgrades. Developed as part of a collaborative project in the frontend developer course at Yandex, this game showcases my ability to build complex, interactive web applications from the ground up using modern technologies.
 
-   - The game starts with a start screen that has the main menu.
+## 📌 Project Description
 
-2. **Gameplay:**
+**Astral Defender** is a survival shooter game where players navigate an endless space arena, battling waves of increasingly challenging enemies. The game is designed to be both fun and technically impressive, demonstrating expertise in game development, web technologies, and user experience design.
 
-   - After pressing the "Start game" button, the player enters an endless game field, where they need to move using four keyboard buttons: W, A, S, D.
-   - Shooting is done in the direction of the player's movement.
+## 🚀 Live Demo
 
-3. **Controls:**
+Play the game here: [Astral Defender Online](https://astral-defender.online/game)
 
-   - W: move forward with automatic shooting forward.
-   - S: move backward with automatic shooting backward.
-   - A: move left with shooting to the left.
-   - D: move right with shooting to the right.
+*Note: The game is fully responsive and optimized for both desktop and mobile devices.*
 
-4. **Diagonal movement:**
+## 🎮 Gameplay Overview
 
-   - W + A: diagonal movement up and left.
-   - A + S: diagonal movement down and left.
-   - S + D: diagonal movement down and right.
-   - D + W: diagonal movement up and right.
+### Main Elements
 
-5. **Enemies:**
+1. **Start Screen**:
+   - The game begins with a main menu where players can start the game, access the guide, or adjust settings.
 
-   - Mini Monsters (2 hp) appear at 0 minutes.
-   - Minsters (6 hp) appear at 2 minutes.
-   - Big Minsters (10 hp) appear at 4 minutes.
-   - Mega Minsters (14 hp) appear at 6 minutes.
+2. **Controls**:
+   - **Desktop**: Use `W`, `A`, `S`, `D` keys for movement. The player character automatically shoots in the direction of movement.
+   - **Mobile**: An on-screen joystick is available for seamless control.
 
-6. **Upgrades when reaching a new level:**
-   - **Hearts:** Increases health by 1
-   - **Bullet damage:** Increases bullet damage by 30% of the current damage.
-   - **Reload speed:** Decreases weapon reload speed by 10% of the current speed.
-   - **Movement speed:** Increases player movement speed by 10% of the current level.
-   - **Crystal magnet range:** Increases the magnet range, allowing you to collect crystals from a greater distance.
-   - **Thanos snap:** Half of all enemies die.
-   - **Flamethrower:** For 10 seconds, the player gets a high reload speed and high bullet damage.
+3. **Movement**:
+   - **Directional**: Move up (`W`), down (`S`), left (`A`), right (`D`).
+   - **Diagonal**: Combine keys for diagonal movement (e.g., `W` + `A` for up-left).
 
-## How to run?
+4. **Enemies**:
+   - **Mini Monsters**: Appear at 0 minutes, 2 HP.
+   - **Monsters**: Appear at 2 minutes, 6 HP.
+   - **Big Monsters**: Appear at 4 minutes, 10 HP.
+   - **Mega Monsters**: Appear at 6 minutes, 14 HP.
 
-1. Make sure you have `node` and `docker` installed
-2. Run the command `yarn bootstrap` - this is a mandatory step, without it nothing will work :)
-3. Run the command `yarn dev`
-4. Run the command `yarn dev --scope=client` to start only the client
-5. Run the command `yarn dev --scope=server` to start only the server
+5. **Upgrades**:
+   - **Hearts**: Increase health by 1.
+   - **Bullet Damage**: Increase damage by 30% of current damage.
+   - **Reload Speed**: Decrease reload time by 10%.
+   - **Movement Speed**: Increase speed by 10%.
+   - **Crystal Magnet Range**: Increase pickup range for crystals.
+   - **Thanos Snap**: Eliminate half of all enemies instantly.
+   - **Flamethrower**: Gain high damage and reload speed for 10 seconds.
+
+6. **Game Over**:
+   - Players receive a summary of their performance and options to restart or return to the main menu.
+
+## ✨ Key Features
+
+- **Responsive Design**: Fully playable on both desktop and mobile devices.
+- **Progressive Web App (PWA)**: Playable offline after initial load.
+- **Server-Side Rendering (SSR)**: Improved performance and SEO.
+- **State Management**: Utilizes Redux for efficient state handling.
+- **Routing**: Implemented with React Router for seamless navigation.
+- **Error Handling**:
+  - Custom 404 and 500 error pages.
+  - Graceful handling of client and server errors.
+
+## 🛠 Technologies Used
+
+### Frontend
+
+- **TypeScript**: Strong typing for reliability and scalability.
+- **React**: Component-based UI development.
+- **Redux Toolkit**: Efficient state management.
+- **React Router**: Declarative routing for React applications.
+- **SCSS (Sass)**: Enhanced styling capabilities.
+- **Canvas API**: High-performance rendering for game graphics.
+- **Web APIs**:
+  - **Service Workers**: Offline functionality.
+  - **Fullscreen API**: Immersive gameplay experience.
+  - **Notifications API**: In-game notifications.
+  - **LocalStorage**: Persistent game settings.
+  - **Web Workers**: Background processing.
+  - **Device Orientation API**: Improved mobile controls.
+
+### Backend
+
+- **Node.js**: Server environment.
+- **Express.js**: Web framework for handling routes and middleware.
+
+### Testing & Quality
+
+- **Jest**: Unit and integration testing.
+- **ESLint & Prettier**: Code linting and formatting.
+- **LeftHook**: Git hooks for enforcing code standards before commits.
+
+### Deployment & DevOps
+
+- **Docker**: Containerization of the application.
+- **Nginx**: Web server for serving static files and reverse proxying.
+- **CI/CD**: Automated testing and deployment pipeline.
+- **SSL**: Secure connections with HTTPS.
+
+## 👨‍💻 Architecture and Approaches
+
+- **Monorepo Structure**: Organized codebase using Lerna.
+- **Server-Side Rendering (SSR)**: Improved initial load times and SEO benefits.
+- **Progressive Enhancement**: Ensuring core functionality works for all users.
+- **Design Patterns**: Implemented SOLID principles, DRY, and KISS methodologies.
+
+## 🚧 Development and Deployment
+
+- **Continuous Integration/Continuous Deployment (CI/CD)**: Automated processes ensure rapid and reliable deployment.
+- **Environment Configuration**: Node.js version specified in `.nvmrc` and `package.json` (`>=15`).
+- **Performance Optimization**:
+  - Code splitting and lazy loading.
+  - Webpack configuration for chunking CSS and JS files.
+- **Memory Leak Prevention**: Regular profiling and optimization.
+
+## 🔧 Installation and Running
+
+**Prerequisites**:
+
+- Node.js (version >= 15)
+- Docker
+
+**Steps**:
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/sjakaev/astral-defender.git
+   cd astral-defender
+   ```
+
+2. **Bootstrap the project**:
+
+   ```bash
+   yarn bootstrap
+   ```
+
+   *This is a mandatory step to install dependencies and set up the project structure.*
+
+3. **Start the development server**:
+
+   ```bash
+   yarn dev
+   ```
+
+4. **Run client or server separately**:
+
+   - **Client**: `yarn dev --scope=client`
+   - **Server**: `yarn dev --scope=server`
+
+
+## 📩 Contact Me
+
+I am open to opportunities and collaboration. Contact me via email: r.sjakaev@gmail.com or through [LinkedIn](https://www.linkedin.com/in/siakaev/).
+
+---
+
+**Thank you for taking the time to explore Astral Defender!**
+
+---
+
